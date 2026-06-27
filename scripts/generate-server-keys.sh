@@ -17,9 +17,9 @@ main() {
 
     umask 077
 
-    wg genkey > "$PRIVATE_KEY" 
+    wg genkey >"$PRIVATE_KEY"
 
-    wg pubkey < "$PRIVATE_KEY" > "$PUBLIC_KEY"
+    wg pubkey <"$PRIVATE_KEY" >"$PUBLIC_KEY"
 
     chmod 600 "$PRIVATE_KEY"
     chmod 644 "$PUBLIC_KEY"
@@ -27,7 +27,7 @@ main() {
     echo
     echo "Server public key:"
     echo "------------------"
-    read -r pubkey < "$PUBLIC_KEY"
+    read -r pubkey <"$PUBLIC_KEY"
     printf "%s\n" "$pubkey"
 
     echo
