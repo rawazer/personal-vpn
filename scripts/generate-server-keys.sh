@@ -2,8 +2,7 @@
 
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${SCRIPT_DIR}/common.sh"
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/common.sh"
 
 readonly PRIVATE_KEY="${KEY_DIR}/server.key"
 readonly PUBLIC_KEY="${KEY_DIR}/server.pub"
@@ -13,7 +12,7 @@ main() {
     require_root
 
     if [[ -e "$PRIVATE_KEY" || -e "$PUBLIC_KEY" ]]; then
-        die "Server keys already exist." $EXIT_ALREADY_EXISTS
+        die "Server keys already exist." "$EXIT_ALREADY_EXISTS"
     fi
 
     umask 077

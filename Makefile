@@ -7,7 +7,7 @@ generate-server-keys:
 	sudo ./scripts/generate-server-keys.sh
 
 lint:
-	shellcheck -x scripts/*.sh
+	shellcheck -x -P scripts scripts/*.sh
 
 format:
 	shfmt -d .

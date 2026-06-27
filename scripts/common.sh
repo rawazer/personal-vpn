@@ -19,7 +19,7 @@ readonly EXIT_PERMISSION_DENIED=4
 require_root() {
 
     if [[ $EUID -ne 0 ]]; then
-        die "This script must be run as root." $EXIT_PERMISSION_DENIED
+        die "This script must be run as root." "$EXIT_PERMISSION_DENIED"
     fi
 
 }
