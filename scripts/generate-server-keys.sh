@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/common.sh"
+
+PRIVATE_KEY="${KEY_DIR}/server.key"
+PUBLIC_KEY="${KEY_DIR}/server.pub"
+
+main() {
+
+    require_root
+
+    if [[ -f "$PRIVATE_KEY" || -f "$PUBLIC_KEY" ]]; then
+        error "Server keys already exist."
+        exit $EXIT_ALREADY_EXISTS
+    fi
+
+    umask 077
+
+    wg genkey > "$PRIVATE_KEY" 
+
+    wg pubkey < "$PRIVATE_KEY" > "$PUBLIC_KEY"
+
+    chmod 600 "$PRIVATE_KEY"
+    chmod 644 "$PUBLIC_KEY"
+
+    echo
+    echo "Server public key:"
+    echo "------------------"
+    cat "$PUBLIC_KEY"
+
+    echo
+    echo "Server keypair successfully generated."
+}
+
+main "$@"
