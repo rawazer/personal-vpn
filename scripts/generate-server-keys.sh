@@ -12,7 +12,7 @@ main() {
 
     require_root
 
-    if [[ -f "$PRIVATE_KEY" || -f "$PUBLIC_KEY" ]]; then
+    if [[ -e "$PRIVATE_KEY" || -e "$PUBLIC_KEY" ]]; then
         die "Server keys already exist." $EXIT_ALREADY_EXISTS
     fi
 
@@ -28,7 +28,8 @@ main() {
     echo
     echo "Server public key:"
     echo "------------------"
-    cat "$PUBLIC_KEY"
+    read -r pubkey < "$PUBLIC_KEY"
+    printf "%s\n" "$pubkey"
 
     echo
     echo "Server keypair successfully generated."
