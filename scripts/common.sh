@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC2034
+
 readonly PROJECT_ROOT="/opt/personal-vpn"
 
 readonly CONFIG_DIR="/etc/personal-vpn"
