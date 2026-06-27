@@ -17,28 +17,33 @@ readonly EXIT_PERMISSION_DENIED=4
 require_root() {
 
     if [[ $EUID -ne 0 ]]; then
-        error "This script must be run as root."
-
-        exit $EXIT_PERMISSION_DENIED
-
+        die "This script must be run as root." $EXIT_PERMISSION_DENIED
     fi
 
 }
 
 log() {
 
-    echo "[INFO] $*"
+    printf "[INFO] %s\n" "$*"
 
 }
 
 error() {
 
-    echo "[ERROR] $*" >&2
+    printf "[ERROR] %s\n" "$*" >&2
 
 }
 
 warn() {
 
-    echo "[WARN] $*"
+    printf "[WARN] %s\n" "$*"
+
+}
+
+die() {
+
+    error "$1"
+
+    exit "${2:-$EXIT_GENERAL_ERROR}"
 
 }

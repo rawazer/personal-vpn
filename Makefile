@@ -1,9 +1,7 @@
-make check
+.PHONY: check
 
-make deploy
+check:
+	./scripts/check-prerequisites.sh
 
-make add-client
-
-make backup
-
-make health
+generate-server-keys:
+	sudo ./scripts/generate-server-keys.sh
