@@ -10,6 +10,16 @@ readonly KEY_DIR="${CONFIG_DIR}/keys"
 
 readonly CLIENT_DIR="${CONFIG_DIR}/clients"
 
+readonly TEMPLATE_DIR="${PROJECT_ROOT}/templates"
+
+readonly CONFIG_FILE="${CONFIG_DIR}/config.env"
+
+readonly WG_CONFIG_DIR="/etc/wireguard"
+
+readonly WG_CONFIG_FILE="${WG_CONFIG_DIR}/wg0.conf"
+
+readonly SERVER_KEY="${KEY_DIR}/server.key"
+
 readonly EXIT_SUCCESS=0
 readonly EXIT_GENERAL_ERROR=1
 readonly EXIT_ALREADY_EXISTS=2
